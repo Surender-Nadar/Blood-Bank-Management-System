@@ -1,0 +1,220 @@
+												-------## BB_Manager ##-------
+CREATE TABLE BB_Manager
+( M_id int NOT NULL PRIMARY KEY,
+ mName varchar(20) NOT NULL,
+ m_phNo int
+);
+
+INSERT ALL
+INTO BB_Manager VALUES(101,'shivank', 9693959671)
+INTO BB_Manager VALUES(102,'shwetanshu', 9693959672)
+INTO BB_Manager VALUES(103,'singh', 9693959673)
+INTO BB_Manager VALUES(104,'yusuf', 9693959674)
+INTO BB_Manager VALUES(105,'jackson', 9693959675)
+INTO BB_Manager VALUES(106,'akhil', 9693959676)
+INTO BB_Manager VALUES(107,'jojo', 9693959677)
+INTO BB_Manager VALUES(108,'stella', 9693959678)
+INTO BB_Manager VALUES(109,'monika', 9693959679)
+INTO BB_Manager VALUES(110,'himanshi', 9693959680)
+select * from dual;
+
+												-------## City ##-------
+CREATE TABLE City
+( City_ID int NOT NULL PRIMARY KEY,
+ City_name varchar(20)NOT NULL
+);
+INSERT ALL
+into City VALUES(1100,'Dallas')
+into City VALUES(1200,'Austin')
+into City VALUES(1300,'Irving')
+into City VALUES(1400,'Houston')
+into City VALUES(1500,'Richardson')
+into City VALUES(1600,'Plano')
+into City VALUES(1700,'Frisco')
+into City VALUES(1800,'Arlington')
+into City VALUES(1900,'San Antonio')
+into City VALUES(2000,'Tyler')
+select * from dual;
+
+												-------## Recipient ##-------
+CREATE TABLE Recipient
+( reci_ID int NOT NULL PRIMARY kEY,
+ reci_name varchar(20)NOT NULL,
+ reci_age varchar(5),
+ reci_Brgp varchar(5),
+ reci_Bqnty float,
+ reco_ID int NOT NULL,
+ City_ID int NOT NULL,
+ M_id int NOT NULL,
+ reci_sex varchar(5),
+ reci_reg_date date,
+ FOREIGN KEY(M_id) REFERENCES BB_Manager(M_id),
+ FOREIGN KEY(City_ID) REFERENCES City(City_ID)
+);
+
+INSERT ALL
+into Recipient VALUES(10001,'Peter',25,'B+',1.5,101212,1100,101,'M','17-DEC-2015')
+into Recipient VALUES(10002,'shivank',60,'A+',1,101312,1100,102,'M','16-DEC-2015')
+into Recipient VALUES(10003,'akhil',35,'AB+',0.5,101312,1200,102,'M','17-OCT-2015')
+into Recipient VALUES(10004,'Parker',66,'B+',1,101212,1300,104,'M','17-NOV-2016')
+into Recipient VALUES(10005,'jojo',53,'B-',1,101412,1400,105,'M','17-APR-2015')
+into Recipient VALUES(10006,'Preetham',45,'O+',1.5,101512,1500,105,'M','17-DEC-2015')
+into Recipient VALUES(10007,'Swetha',22,'AB-',1,101212,1500,101,'F','17-MAY-2015')
+into Recipient VALUES(10008,'Swathi',25,'B+',2,101412,1300,103,'F','14-DEC-2015')
+into Recipient VALUES(10009,'Lance',30,'A+',1.5,101312,1100,104,'M','16-FEB-2015')
+into Recipient VALUES(10010,'Marsh',25,'AB+',3.5,101212,1200,107,'M','17-OCT-2016') 
+select * from dual;
+
+												-------## Recording_Staff ##-------
+
+CREATE TABLE Recording_Staff
+( reco_ID int NOT NULL PRIMARY KEY,
+ reco_Name varchar(20) NOT NULL,
+ reco_phNo int
+);
+
+INSERT ALL
+into Recording_Staff VALUES(101012,'Lekha',4044846553)
+into Recording_Staff VALUES(101112,'shivam',4045856553)
+into Recording_Staff VALUES(101212,'Walcot',4045806553)
+into Recording_Staff VALUES(101312,'jackson',4045806553)
+into Recording_Staff VALUES(101412,'Silva',4045806553)
+into Recording_Staff VALUES(101512,'Adrian',4045806553)
+into Recording_Staff VALUES(101612,'shivam',4045806553)
+into Recording_Staff VALUES(101712,'shyam',4045816553)
+into Recording_Staff VALUES(101812,'Jerry',4045826553)
+into Recording_Staff VALUES(101912,'Tim',4045836553)
+select * from dual; 
+												-------## Blood_Donor ##-------
+CREATE TABLE Blood_Donor
+( bd_ID int NOT NULL PRIMARY KEY,
+ bd_name varchar(20) NOT NULL,
+ bd_age varchar(5),
+ bd_sex varchar(5),
+ bd_Bgroup varchar(5),
+ bd_reg_date date,
+ reco_ID int NOT NULL,
+ City_ID int NOT NULL,
+ FOREIGN KEY(reco_ID) REFERENCES Recording_Staff(reco_ID),
+ FOREIGN KEY(City_ID) REFERENCES City(City_ID)
+);
+
+INSERT ALL 
+INTO Blood_Donor VALUES(150011,'Mark',25,'M','O+','19-JUL-2015',101412,1100)
+INTO Blood_Donor VALUES(150012,'Abdul',35,'M','A-','24-DEC-2015',101412,1100)
+INTO Blood_Donor VALUES(150013,'Shivank',22,'M','AB+','28-AUG-2015',101212,1200)
+INTO Blood_Donor VALUES(150014,'shweta',29,'M','B+','17-DEC-2015',101212,1300)
+INTO Blood_Donor VALUES(150015,'Shyam',42,'M','A+','22-NOV-2016',101212,1300)
+INTO Blood_Donor VALUES(150016,'Dan',44,'F','AB-','06-FEB-2016',101212,1200)
+INTO Blood_Donor VALUES(150017,'Mike',33,'M','B-','15-OCT-2016',101312,1400)
+INTO Blood_Donor VALUES(150018,'Elisa',31,'F','O+','04-JAN-2016',101312,1200)
+INTO Blood_Donor VALUES(150019,'Carrol',24,'F','AB+','10-SEP-2016',101312,1500)
+INTO Blood_Donor VALUES(150020,'shivansh',29,'M','O-','17-DEC-2016',101212,1200)
+select * from dual;
+
+												-------## DiseaseFinder ##-------
+CREATE TABLE DiseaseFinder
+( dfind_ID int NOT NULL PRIMARY KEY,
+ dfind_name varchar(20) NOT NULL,
+ dfind_PhNo int
+);
+
+INSERT ALL
+into DiseaseFinder VALUES(11,'Peter',9693959681)
+into DiseaseFinder VALUES(12,'Park',9693959682)
+into DiseaseFinder VALUES(13,'Jerry',9693959683)
+into DiseaseFinder VALUES(14,'shivam',9693959672)
+into DiseaseFinder VALUES(15,'Monika',9693959679)
+into DiseaseFinder VALUES(16,'Ram',9693959684)
+into DiseaseFinder VALUES(17,'Swathi',9693959685)
+into DiseaseFinder VALUES(18,'Gautham',9693959686)
+into DiseaseFinder VALUES(19,'Ashwin',9693959687)
+into DiseaseFinder VALUES(20,'Yash',9693959688)
+select * from dual;
+												-------## BloodSpecimen ##-------
+CREATE TABLE BloodSpecimen
+( specimen_number int NOT NULL,
+ b_group varchar(10) NOT NULL,
+ status int,
+ dfind_ID int NOT NULL,
+ M_id int NOT NULL,
+primary key (specimen_number,b_group),
+FOREIGN KEY(M_id) REFERENCES BB_Manager(M_id),
+FOREIGN KEY(dfind_ID) REFERENCES DiseaseFinder(dfind_ID)
+);
+
+INSERT ALL
+into BloodSpecimen VALUES(1001, 'B+', 1,11,101)
+into BloodSpecimen VALUES(1002, 'O+', 1,12,102)
+into BloodSpecimen VALUES(1003, 'AB+', 1,11,102)
+into BloodSpecimen VALUES(1004, 'O-', 1,13,103)
+into BloodSpecimen VALUES(1005, 'A+', 0,14,101)
+into BloodSpecimen VALUES(1006, 'A-', 1,13,104)
+into BloodSpecimen VALUES(1007, 'AB-', 1,15,104)
+into BloodSpecimen VALUES(1008, 'AB-', 0,11,105)
+into BloodSpecimen VALUES(1009, 'B+', 1,13,105)
+into BloodSpecimen VALUES(1010, 'O+', 0,12,105)
+into BloodSpecimen VALUES(1011, 'O+', 1,13,103)
+into BloodSpecimen VALUES(1012, 'O-', 1,14,102)
+into BloodSpecimen VALUES(1013, 'B-', 1,14,102)
+into BloodSpecimen VALUES(1014, 'AB+', 0,15,101)
+select * from dual;
+												-------## Hospital_info_1 ##-------
+
+CREATE TABLE Hospital_Info_1
+( hosp_ID int NOT NULL,
+ hosp_name varchar(20) NOT NULL,
+ City_ID int NOT NULL,
+ M_id int NOT NULL,
+ primary key(hosp_ID),
+ FOREIGN KEY(M_id) REFERENCES BB_Manager(M_id),
+ FOREIGN KEY(City_ID) REFERENCES City(City_ID)
+);
+
+INSERT ALL
+into Hospital_Info_1 VALUES(1,'MayoClinic',1100,101)
+into Hospital_Info_1 VALUES(2,'CleavelandClinic',1200,103)
+into Hospital_Info_1 VALUES(3,'NYU',1300,103)
+into Hospital_Info_1 VALUES(4,'Baylor',1400,104)
+into Hospital_Info_1 VALUES(5,'Charlton',1800,103)
+into Hospital_Info_1 VALUES(6,'Greenoaks',1300,106)
+into Hospital_Info_1 VALUES(7,'Forestpark',1300,102)
+into Hospital_Info_1 VALUES(8,'Parkland',1200,106)
+into Hospital_Info_1 VALUES(9,'Pinecreek',1500,109)
+into Hospital_Info_1 VALUES(10,'WalnutHill',1700,105)
+select * from dual;
+
+												-------## Hospital_info_2 ##-------
+CREATE TABLE Hospital_Info_2
+( hosp_ID int NOT NULL,
+ hosp_name varchar(20) NOT NULL,
+ hosp_needed_Bgrp varchar(10),
+ hosp_needed_qnty int,
+ primary key(hosp_ID,hosp_needed_Bgrp)
+);
+
+
+INSERT ALL 
+into Hospital_Info_2 VALUES(1,'MayoClinic','A+',20)
+into Hospital_Info_2 VALUES(1,'MayoClinic','A-',0)
+into Hospital_Info_2 VALUES(1,'MayoClinic','AB+',40)
+into Hospital_Info_2 VALUES(1,'MayoClinic','AB-',10)
+into Hospital_Info_2 VALUES(1,'MayoClinic','B-',20)
+into Hospital_Info_2 VALUES(2,'CleavelandClinic','A+',40)
+into Hospital_Info_2 VALUES(2,'CleavelandClinic','AB+',20)
+into Hospital_Info_2 VALUES(2,'CleavelandClinic','A-',10)
+into Hospital_Info_2 VALUES(2,'CleavelandClinic','B-',30)
+into Hospital_Info_2 VALUES(2,'CleavelandClinic','B+',0)
+into Hospital_Info_2 VALUES(2,'CleavelandClinic','AB-',10)
+into Hospital_Info_2 VALUES(3,'NYU','A+',0)
+into Hospital_Info_2 VALUES(3,'NYU','AB+',0)
+into Hospital_Info_2 VALUES(3,'NYU','A-',0)
+into Hospital_Info_2 VALUES(3,'NYU','B-',20)
+into Hospital_Info_2 VALUES(3,'NYU','B+',10)
+into Hospital_Info_2 VALUES(3,'NYU','AB-',0)
+into Hospital_Info_2 VALUES(4,'Baylor','A+',10)
+into Hospital_Info_2 VALUES(4,'Baylor','A-',40)
+into Hospital_Info_2 VALUES(7,'Forestpark','B-',40)
+into Hospital_Info_2 VALUES(8,'Parkland','B+',10)
+into Hospital_Info_2 VALUES(9,'Pinecreek','AB-',20)
+select * from dual;
