@@ -1,6 +1,6 @@
 # Blood-Bank-Management-System
-This Project is made using SQL in my college days 
-It contains the following
+This Project is made using SQL in my college days.
+It contains the following:
   # ER DIAGRAM
   # INFORMATION OF ENTITIES 
   # RELATIONAL SCHEMAS
